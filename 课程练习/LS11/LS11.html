@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /* (function 函数名(参数){
+         函数体
+     }(实参))
+     */
+    function max(x,y){
+        return x>y?x:y;
+    }
+    max(2,3);
+
+    (function max(x,y){
+        return x>y?x:y;
+    }(2,3));
+
+    (function max(x,y){
+        return x>y?x:y;
+    })(2,3);
+
+    function fn(){
+        var arr1=[];
+        for(var i=0;i<10;i++){
+            arr1[i]=function(){
+                return i;
+            }
+        }
+        return arr1;
+    }
+    fn()[0]();//10是最后一次i的值
+
+    //优化代码
+    function fn(){
+        var arr1=[];
+        for(var i=0;i<10;i++){
+            (function(j){
+                arr[j]=function(){
+                    return j;
+                }
+            })(i)
+        }
+        return arr1;
+    }
+    fn()[0]();
+/*****************************************/   
+    for(var i=0;i<3;i++){
+        setTimeout(function(){
+            console.log(new Date(),i);
+        },i*1000);
+    }
+</script>
+</html>

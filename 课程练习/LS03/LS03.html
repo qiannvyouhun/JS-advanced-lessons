@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//基本数据类型在操作过程中会有自动装箱的过程
+	//生成临时对象，临时对象在使用完会自动释放
+	var num=10;
+	num.toString();
+
+	var num=10;
+	var numObject=new Number(num);
+	numObject.toString();
+
+	num.p=10;
+	var t=num.p;
+	console.log(t);
+
+	//保留一位小数
+	var num1=20.36;
+	num1.toFixed(1);
+
+	//查看数据的内部结构
+	var num2=20.36;
+	var num2Obj=new Number(num2);
+	console.log(num2Obj);
+	num2.toFixed(1);
+
+	var n1=12345.6789;
+	console.log(n1.toPrecision(2));
+
+	//charAt返回特定索引位置的字符
+
+
+	//number    string     boolean 
+	//对应的构造函数：Number() ...
+	//基本数据类型，变量的__proto__属性==变量的prototype属性
+	//num.__proto__==Number.prototype
+	var nu=10;
+	console.log(nu.__proto__);
+
+	//String:
+	var str="abcdefrh";
+	//返回后特定索引位置的字符
+	str.charAt(1);
+
+	//返回特定索引位置的字符的unicode码
+	str.charCodeAt(0);
+
+	//从特定位置到特定位置截取字符
+	str.slice(0,3);//a.b.c
+
+	//截取字符串(起始位置，截取的长度)
+	str.substr(0,3);
+
+	//substring(截取字符串的起始位置，结束位置)第二个参数可选
+	//起始值>结束值   互换位置
+	//如果有超出索引位置，0-str.length-1,自动截断
+	str.substring(0,3);//abc
+	str.substring(3,0);//abc
+
+	//split（特定的字符）将字符串以特定的字符分割，将字符串作为数组元素生成数组
+	var str1="abc*def";
+	str1.split("*")
+
+	//trim()去除字符串两边的空白字符，字符串内部的不能去除
+</script>
+</html>

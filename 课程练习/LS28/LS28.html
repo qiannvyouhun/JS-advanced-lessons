@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //一、数组的解构赋值
+    let[, ,third]=[1,2,3];
+    console.log(third);//3
+    //...是剩余运算符，除了“1”和head进行了匹配之外，剩余的元素赋于tail
+    let[head,...tail]=[1,2,3,4];
+    console.log(head,tail);//1 [2, 3, 4]
+    //当左侧的元素个数大于有哦侧得到元素个数时，
+    //未匹配到的元素是undefined，如果是“...”未与元素匹配成功就返回[]
+    let [d,e,...f]=['a'];
+    console.log(d,e,f);//"a" undefined []
+
+    //二、对象的解构赋值
+    //根据键名进行分配，然后完成赋值
+    var {bar,foo}={foo:"foo1",bar:"bar1"};
+    console.log(bar,foo);//bar1 foo1
+
+    //三、字符串的解构赋值：
+    let str=new String("abcdef");
+    let [a,b,c]=str;
+    console.log(a,b,c);//a b c
+
+    let [h,i]="hi";
+    console.log(h,i);//h i
+
+    //数字的解构赋值：
+    var num = new Number(5);
+    console.log(num.toString);//ƒ toString() { [native code] }
+    let {toString:s1}=num;
+    console.log(s1);//ƒ toString() { [native code] }
+
+    //函数
+    function fn1({x=0,y=0}={}){
+        return [x,y];
+    }
+    console.log(fn1());//(2) [0, 0]
+    console.log(fn1({x:1,y:2}));//(2) [1, 2]
+
+    //函数参数的解构赋值
+    let [x,y]=['a','b'];
+    [y,x]=[x,y];
+    console.log(x,y);// b a 变量的值互换
+
+
+    let json1={
+        "username":"zhangsan",
+        "age":20,
+        "courseList":["高等数学","英语"]
+
+    }
+    let jsonStr=JSON.stringify(json1);
+    console.log(json1);
+    json1=JSON.parse(jsonStr);
+
+    let(username,age)=json1;
+    console.log(username,age);
+
+
+
+
+    </script>
+    
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//ES5中没有块作用域:
+	if(true){
+		var a=3;
+	}
+	a=2;
+	console.log(a);//2
+
+	//定义可以提升到全局，但是赋值还是在块作用域中，但是条件时false所以不执行，b未定义
+	if(false){
+		var b=3;
+	}
+	console.log(b);//undefined
+
+	//获取到的是最终的变量的值
+	for(var i=0;i<3;i++){
+
+	}
+	console.log(i);//3
+
+
+	//非严格模式：当一个变量没有定义直接使用会自动提升为全局变量
+	function fn2(){
+		username="zhangsan";
+	}
+	fn2();
+	console.log(username);//zhangsan
+	//JS中最大的缺陷：全局变量
+
+
+	//JS严格模式：对当前页面的所欲的JS都是用严格模式
+	"use strict"
+	//对函数内部的代码应用严格模式就在函数内部写：
+	function fn1(){
+		"use strict"
+	// }
+
+	// function fn3(){
+	// 	"use strict"
+	// 	username3="zhangsan";
+	// }
+	// fn3()
+	// console.log(username3);//报错
+
+
+	function fn4(){
+		//非严格模式下普通函数的内部this指向window对象
+		console.log(this);
+		//严格模式下，this指向undefined
+		"use strict"
+		console.log(this);
+		}
+
+	//可以用此特性来判断当前是否为严格模式
+	// function fn5(){
+	// 	var result=(this === undefined?true);
+	// 	return redult;                                                          
+	// }
+	// console.log(fn5)
+
+
+	var str="abcdef";
+	str.length=1;//将1赋值给临时变量，之后就被删除了
+	console.log(str.length);//6
+
+
+	//switch讲解：switch是进行的值和类型的转换。不会发生影式类型转换
+	// var index=1;
+	// switch(index){
+	// 	case 1:
+	// 	console.log("星期一");
+	// 	break;
+	// 	case 2:
+	// 	console.log("星期二");
+	// 	break;
+	// }
+ //    default:console.log("不符合");
+ //    break;
+
+    var obj1={"username":"zhangsan","age":20};
+    obj1.__proto__.sex="male";
+    for(var i in obj1){
+    	console.log(i,obj1[i]);
+    }
+
+
+
+
+
+
+
+</script>
+</html>

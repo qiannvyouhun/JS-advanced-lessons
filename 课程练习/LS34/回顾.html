@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        
+</body>
+<script>
+    /**立即函数**/
+    /*
+        1、防止变量污染
+        2、防止变量的非希望共享（一般是for循环）
+    */
+   (function(){
+
+   })();
+   for(var i=0;i<3;i++){
+       //1、给元素绑定事件，回调函数
+       //2、延迟执行、定时执行
+       (function(j){
+
+       })(i)
+   };
+
+   /**闭包,JS存在的代码运行机制**/
+   //1、外层函数fn1、内层函数fn2
+   function fn1(){
+       var x=0;
+       function fn2(){
+           return ++x;
+       }
+       return fn2;
+   }
+   var result=fn1();
+   result();
+   result();
+
+
+
+
+
+</script>
+</html>

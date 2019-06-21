@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            background:#ddd;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="绑定点击事件" id="btn1">
+    <input type="button" value="绑定点击事件" id="btn2">
+    <input type="button" value="绑定点击事件" id="btn3">
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558064279003&di=390484bc552fc11d6712711df30b58ae&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170503%2Fb75b1108dd894d6b8997b14841db2962_th.jpeg">
+    <div>层1</div>
+    <div>层2</div>
+    <div>层3</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+    /*
+        jquery包装集.事件方法（回调函数）
+    */
+    $("#btn1").click(function(){
+        alert("按钮被点击了");
+    })
+
+    //所有按钮添加上了点击事件
+    $(":button").click(function(){
+        alert("按钮被点击了");
+    })
+
+    //给照片加上10px的黑色边框
+    $("img").mouseover(function(){
+        $(this).css("border","10px solid black");
+    })
+
+    //div的样式
+    $("div").mouseover(function(){
+        $(this).css("background","red");
+    }).click(function(){
+        $(this).css("background","yellow");
+    }).mouseout(function(){
+        $(this).css("background","blue");
+    })
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1" style="height: 100px;width: 100px;"></div>
+</body>
+<script>
+    console.log("小明回家");
+    var xx=["书桌","书包","铅笔盒"];//小明家中
+    console.log("在家-做作业中");
+    function goToStore(){
+        var yy=["文具店老板","出售的文具"];//文具店中
+        console.log("在文具店-买文具中");
+        console.log("在文具店-买文具中 发现没钱");
+        goToStore();
+        console.log("在文具店-买好文具 返回家");
+    }
+    function goToStore(){
+        var zz=["银行职员","柜员机"];//银行中
+        console.log("在银行-取钱  返回文具店");
+    }
+    console.log("在家中-做作业  发现笔没油了");
+    goToStore();
+    console.log("在家-继续做作业");
+
+
+    //查找username需要三次，因为他在全局，导致效率变低
+    //在写代码的时候尽量减少全局变量的使用
+    var div1=document.getElementById("div1");
+    var username="zhangsan";
+    functionfoo(){
+        div1.onclick=function(){
+            this.innerHTML=username;
+         }
+    }
+    foo();
+
+    //在匿名函数里面定义变量，缩小了作用域
+    (function(w,d){
+        w.onload=function(){
+
+        }
+    })(window,document);
+
+    </script>
+</html>

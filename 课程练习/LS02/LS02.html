@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	var object1={"username":"zhangsan"};
+	var object2=object1;
+	object2.username="lisi";
+	console.log(object1);
+
+
+	var arr1=[1,2,3];
+	var arr2=arr1;
+	arr2=[1,2];
+	console.log(arr1);
+
+
+	var num1=3;
+	var num2=4;
+	console.log(num1===num2);
+
+
+
+
+	var username ="zhangsan";
+	var age=18;
+	function setName(){
+		username="lisi";
+	}
+	function setAge(){
+		age=20;
+	}
+	function setInfor(){
+		setName();
+		setAge();
+	}
+	setName();
+	setInfor();
+
+</script>
+</html>

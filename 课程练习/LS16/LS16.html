@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //1、非严格模式下，this指向window对象。
+    //2、严格模式下，
+    var x=10;
+    console.log(window.x);
+    function thisTest(){
+        console.log(this);
+        console.log(this==window);
+    }
+    thisTest();
+
+    function thisTest1(){
+        'use strict';
+        console.log(this);
+        return this==undefined?true:false;
+    }
+    thisTest1();
+
+    /*
+    1、直接定义在对象下的方法调用主体就是当前对象
+    2、前提是没有函数的嵌套关系    
+    */
+    var point={
+        x:0,
+        y:0,
+        moveTo:function(x,y){
+            this.x=x;//this指向point
+            this.y=y;
+        }
+    }
+    point.moveTo(10,10);
+
+    //三、定义一个构造函数
+    //this指向函数调用的主体
+    function point(x,y){
+        this.x=x;
+        this.y=y;
+        this.moveTo=function(x,y){
+            this.x=x;
+            this.y=y;
+        }
+    }
+    var p=new Point(10,10);
+    p.moveTo(15,15);
+
+
+     /*
+        方法A.call(对象)；
+        切换方法A的调用主体。this指向函数的调用主体。
+        方法.call(要切换的调用对象，arg1,arg2,arg3);
+        方法B.apply(要切换的调用对象，[arg1,arg2,arg3]);
+    */
+    var objA = {name:"AA",x:1};
+    var objB = {name:"BB",x:2};
+    function test(m){
+        console.log(this.name);
+        this.x = m;
+        console.log(this.x);
+    }
+    objA.fun=test;
+    objA.fun();
+    objA.fun.call(objB,3);
+</script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var obj = {
+    x:1,
+    y:2
+};
+var obj1 = Object.create(obj);
+var obj2 = Object.create(obj);
+obj1.__proto__.x=3;//可以改变原型
+console.log(obj2.x);//3
+obj1.x=4;//无法改变原型
+console.log(obj2.x);//3
+
+
+function Person (name){
+        this.name=name;
+    }
+    Person.__proto__.age=20;
+    Person.__proto__.showName=function(){
+        console.log(this.name);
+    }
+
+    function Student(id){
+        this.id=id;
+    }
+    /*
+        person.name属性Mike,person.__proto__.age
+        person.__proto__.showName
+    */
+    Student.prototype=new Person("Mike");
+    Student.prototype=person;
+    var s1 = new Student("2017001");
+    var s2=new Student("2017002");
+    /*
+        s1自身上面没有age，s1.__proto__==Student.prototype
+        Student.prototype=new Person;
+        s1.__proto__.__proto==person.__proto__;
+        person.__proto__==Person.ptototype;
+    
+    */
+    console.log(s1.id,s2.id);
+    console.log(s1.age,s2.age);
+    console.log(s1.age,s2.name);
+</script>
+</html>

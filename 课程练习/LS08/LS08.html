@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    //对象instanceof构造函数
+    //1、判断这个对象能否使用后面的构造函数实例化得到
+    function Person(username,age){
+        this.username=username;
+        this.age=age;
+    }
+    var person=new Person("zhangsan",20);
+    console.log(person instanceof Person);//true
+    console.log(person);
+   
+    //2、判断能否在对象的原型链上找到构造函数的prototype
+    console.log(person.__proto__==Person.prototype);
+    console.log(person instanceof Object);//Object也是一个构造函数，是对象最根源的构造函数
+
+    //3、判断能否在person的原型链上找到Object构造函数的prototype
+    console.log(person.__proto__==Object.prototype);
+    console.log(person.__proto__.__proto__);
+    console.log(Object.__proto__);
+
+
+    //函数对象的属性：
+    //1、arguments
+    function fn1(){
+        //arguments获取函数调用时传入的实参，类数组结构
+        //arguments.length=fn1.arguments.length是函数的属性
+        for(var i=0;i<arguments.length;i++){
+            console.log(arguments[i]);
+        }
+    }
+    fn1(10,5)
+
+    //2、length
+    function fn2(x,y,z){
+        //函数名.length便是形参个数
+       console.log(fn2.length);
+    }
+    fn2(10,5,3,1)
+
+    //3、caller
+    function fn3(){
+        console.log(fn3.caller);
+    }
+    function fn4(){
+        fn3();
+    }
+    fn4();
+
+    //函数对象的方法：
+    //call和apply方法前面必须是一个函数
+    //1、call
+    var objA={"objName":"AAA"};
+    var objB={"objName":"BBB"};
+    objA.foo=function(){
+        console.log(this.objName)
+    }
+    objA.foo();
+    //方法.call（对象）
+    objA.foo.call(objB);
+
+    //原本的this指向是使用Person构造函数实例化得到的对象
+    function Person(username){
+        this.username=username;
+        this.sayH=function(){
+            console.log(this.username);
+        }
+    }
+
+    //Person.call(this,username)具有一个指定的this值和分别的提供的参数（参数列表）
+    function Student(username,age,sex){
+        Person.call(this,username,age);
+        // Person.apply(this,[username,age]);
+        // this.age=age;
+        this.sex=sex;
+    }//call调换
+
+    // var person=new Person("zhangsan");
+    var Student=new Student("lili",20);
+    console.log(student);
+
+
+
+    //生成新的函数，
+    var objA={
+        "objName0":"AAA",
+        "foo":function(){
+            console.log(this,Object);
+        }
+    }
+    var objB={"objName":"BBB"};
+    var foo2=objA.foo.bind(objB);
+    foo2();
+
+
+
+
+    var obj={x:3};
+    function fn1(){
+        function fn2(){
+            console.log(this.x);
+        }
+        return fn2;
+    }
+    obj.fn3=fn1;
+    obj.fn4=fn1();
+    obj.fn3();
+    obj.fn4();
+
+
+
+    var obj1={
+        x:1,
+        fn1:function(){
+            var that=this;
+            function fn2(){
+                console.log(this.x);
+            }
+            console.log(this.x);
+            fn2();
+        }
+    }
+    obj1.fn1();
+</script>
+</html>

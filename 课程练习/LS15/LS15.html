@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var obj1={z:1};
+    var obj2=Object.create(obj1);
+    console.log(obj1.__proto__==Object.prototype);//true（object构造函数）
+    console.log(obj2.__proto__);//obj1
+    console.log(obj2.__proto__.__proto__);
+    console.log(obj2.__proto__.__proto__.__proto__);//null到头了
+
+    var obj2=Object.create(obj1);
+    obj2.z;
+    obj2.sayhi();
+
+    //构造函数
+    function Person(username,age){
+        this.username=username;
+        this.age=age;
+    }
+    var person=new Person("zhangsan",20);
+    console.log(person.__proto__==Person.prototype);//true
+
+    //属性写在前面，共有的方法可以提出来
+    function Person(username,age){
+        this.username=username;
+        this.age=age;
+    }
+    Person.prototype.sayhi=function(){
+        console.log(this.username);
+    }
+    var person1=new Person("zhangsan",20);
+    var person2=new Person("zhangsa",30);
+    console.log(person.__proto__==Person.__proto__);
+    console.log(person1.__proto__==Person.prototype);
+    //person1和person共用sayhi方法，洁身内存空间
+    person1.sayhi();
+    person2.sayhi();
+
+
+    //定义一个车（car）的对象，height，width，weight
+    //创建一个小轿车的对象，继承车相关的属性，自己具有color，searNum，create的方法以及构造函数的形式
+
+    var car={
+        height:150,
+        width:200,
+        height:2000
+    }
+    //方法一
+    var smallCar=Object.create(car);
+    smallCar.color="red";
+    smallCar.smallCar=4;
+    console.log(smallCar.height);
+    console.log(smallCar.width);
+
+    //方法二：构造函数
+    function createSmallCar(color,seatNum){
+        this.color=color;
+        this.seatNum=seatNum;
+    }
+    createSmallCar.prototype=car;
+    var smallCar=new createSmallCar("red",4);
+</script>
+</html>

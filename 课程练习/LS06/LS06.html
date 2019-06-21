@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		//JS中定义函数的形参和调用的函数的实参的个数可以不一样
+		function sum(x,y,z){
+			//仅仅声明好但是没有赋值
+			console.log(x,y,z);
+			// x=x;
+			// y=y;
+			// z=z;
+			//提供一个默认值，开始是undefined所以用||
+			x=x||1;
+			y=y||2;
+			z=z||3;
+			return x+y+z;
+		}
+		//console.log(sum());
+		console.log(sum(4,5,6));//4,5,6
+
+
+		//ES6中设置了函数默认值
+		function sum1(x,y=2,z=3){
+			return x+y+z;
+			sum1(1);
+		}
+
+
+
+	</script>
+
+
+</body>
+</html>

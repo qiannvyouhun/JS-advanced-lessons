@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table id="tb1" width="400" height="400" border="1" align="center">
+        <tr class="even">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="odd">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <table width="400" height="400" border="1" align="center">
+            <tr class="even">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="odd">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js">
+</script>
+<script>
+    /*
+        $("") jquery包装集 
+        "#tb1 .even"叫做层级选择器
+        选择器：
+            id选择器
+            标签选择器
+            类选择器
+            层级选择器
+    */
+    // $("body").css("background","green");
+    $("#tb1 .even").css("background","red");
+
+    $("td:first").css("background","red");
+    $("td:last").css("background","green");
+    $("td:even").css("background","blue");//从0开始(奇数)
+    $("td:odd").css("background","purple");//(偶数)
+
+    //eq(index)选取集合里面索引是index的元素
+    $("td:eq(0)").css("background","red");
+    //gt(index)选中比给定索引值大的元素
+    $("td:gt(1)").css("background","white");
+    //lt(index)选中比给定索引值小的元素
+    $("td:lt(2)").css("background","yellow");
+    //not(selector)排除某一元素
+    $("td:not(#td1)").css("background","pink");
+
+</script>
+</html>

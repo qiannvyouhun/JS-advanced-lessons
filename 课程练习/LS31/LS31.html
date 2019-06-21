@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        Symbol:
+            ①不需要new
+            ②生成唯一值，不会有属性名重复
+    */
+    let s1=Symbol("s1");
+    let s2=Symbol("s2");
+    let s3=Symbol("s1");
+    console.log(s1==s3);
+
+
+    let obj={};
+    obj[s1]="hello";
+    let obj1={
+        [s1]:"hello"
+    }
+
+    /*得到之前定义好的symbol
+        Symbol.for()首先查看是否存在该描述信息的Symbol变量存在的话直接获取，不存在的话再去创建
+    */
+    let s1=Symbol("foo");
+    console.log(Symbol.for("foo")==Symbol.for("foo"));//true
+
+    /*
+        Set拥有的是唯一值，所以会自动删除重复值
+    */
+    let s2=new Set([1,2,3,4,5,6,1,2,3]);
+    console.log(s2);
+    //for of 进行遍历
+    for(var i of s2){
+        console.log(i);
+    }
+
+
+    //新增数据结构（Map）
+    let m1=new Map([
+        ["username","zhangsan"],
+        ["age",20],
+        ["sex","male"]
+    ]);
+    //遍历
+    console.log(m1.keys());
+   
+    console.log(m1.size);//3
+    for(let i of m1){
+        console.log(i);
+    }
+    m1.set("weight","60kg");
+    m1.get("username");//通过键名获取属性值
+    m1.delete("username");
+    m1.has("username");
+</script>
+</html>

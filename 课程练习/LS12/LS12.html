@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+//     //闭包：函数（addNum）内部定义的函数（）
+//     //函数内部定义的变量，在函数外码面能否访问到？==>
+//     function f1(){
+//     var x=1;
+//     function f2(){
+//         return x++;
+//     }
+//     return f2();
+// }
+
+// //闭包：通过返回函数内部定义的函数（f2），来访问f1内部的局部变量
+// var f3 = f1();//f3指向f1
+// console.log(f3);//2
+// console.log(f3);//3
+
+
+// //基本闭包结构
+// function foo(x){
+//     var tmp=10;
+//     return function(y){
+//         console.log(x+y,++tmp);
+//     }
+// }
+// var fee=foo(10);
+// fee(10);//20   11
+
+
+var tmp=10;
+function foo(){
+    return function(y){
+        console.log(y,++tmp);
+    }
+}
+var fee=foo();
+fee(10);//20   11
+
+function counter(){
+    var n=0;
+    return{
+        count:function(){
+            return ++n;
+        },
+        reset:function(){
+            n=0;
+            return n;
+        }
+    }
+}
+var c=counter(),d=counter();
+console.log(c.count());
+console.log(d.count());
+console.log(c.count());
+console.log(c.count());
+console.log(d.count());
+
+</script>
+</html>

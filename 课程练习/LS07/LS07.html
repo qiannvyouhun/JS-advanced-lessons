@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		//函数的三种声明方式；
+		//一、变量的定义会被解释器进行提升，即sum(1,2);可以提到函数前面进行执行
+		function sum(x,y){
+			return x+y;
+		}
+		sum(1,2);
+
+		//二、匿名函数：
+		window.onload=function(){
+			alert("页面加载完成")
+		}
+
+		var sum1=function(x,y){
+			return x+y;
+		}
+		sum1(1,2);
+
+		//三、构造函数进行实例化得到一个function：
+		//执行效率比较低（有实例化过程）但是比较灵活
+		var fn1=new Function("a","b","return x+y");
+		fn1(1,2);
+
+		//函数的定义和调用：
+		var obj={
+			x:0,
+			//test内部的this指向调用方法的对象
+			test:function(){
+				console.log(this.x);
+			}
+		}
+		obj.test();
+
+
+		var objA={"objName":"AAA"};
+		var objB={"objName":"BBB"};
+		objA.fun=function(){
+			console.log(this.objName);
+		}
+		objA.fun();//AAA
+
+		objA.fun.call(objB);//BBB
+		//call切换作用，fun本是objA的方法，通过call编程objB的方法并且立即执行该方法
+		//方法名.call（对象）可以切换方法调用的对象，这个作用和apply()类似
+
+		//构造函数的调用，构造函数首字母大写
+		function Person(username){
+			this.username=username;
+
+		}
+		Person.prototype.sayHi=function(){
+			console.log(this.username);
+
+		}//?
+		var person=new Person("zhangsan");
+		console.log(person.__proto__===Person.prototype);
+		//所有的实例化对象都指向构造函数的prototype,所以共用函数上prototype的属性和方法
+
+
+		//函数参数数量问题：
+		function test(){
+			var s="";
+			//arguments获取函数传入的实参，是个类数组对象
+			for(var i=0;i<arguments.length;i++){
+				s+=arguments[i];
+			}
+			return s;
+		}
+		test("hello"," world","!");
+
+		//参数类型和传参方式：
+		//引用数据类型:
+		var obj={x:0};
+		function bar(obj1){
+			obj1.x=2;
+			console.log(obj,obj1);		
+		}
+		bar(obj);
+
+
+
+		//思考？
+		//定义一个函数完成对变量的复制过程生成新的变量I并返回，引用类型时，可以是数组、对象
+		var obj=20;
+
+		function copyArg(arg1){
+			var copy=20;
+			switch(true){
+				case (arg1 instanceof String)://基本数据类型可以直接等于
+				copy=arg1;
+				break;
+				case (arg1 instanceof Number):
+				copy=arg1;
+				break;
+				case (arg1 instanceof Boolean):
+				copy=arg1;
+				break;
+				case (arg1 instanceof Array)://引用数据类型
+				copy=[];
+				for(var i=0;i<arg1.length;i++){
+					copy[i]=arg1[i];
+				}
+				break;
+			}
+			console.log(copy);
+
+		}
+		copyArg(obj);
+
+
+
+		//typeof无法更细致的区分引用数据类型
+
+		//对象instanceof 构造函数
+		//1.看这个对象能否用该该构造函数实例化得到，能得到结果为true
+
+
+		var arr2=[];
+		var arr2=new Array();
+		arr2 instanceof Array();
+
+		function Person(username){
+			this.username=username;
+		}
+		var person=new Person("zhangsan");
+		person instanceof Person;
+
+
+		person instanceof 	object;
+
+
+		
+
+
+
+	</script>
+
+</body>
+</html>

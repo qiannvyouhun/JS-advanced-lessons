@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            height: 400px;
+            width: 200px;
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div></div>
+    <button id="slidedown">slidedown</button>
+    <button id="slideup">slideup</button>
+    <button id="fadein">fadein</button>
+    <button id="fadeout">fadeout</button>
+    <button id="animate">animate</button>
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+    //动画：第一个参数是动画的样式，第二个参数是动画执行的时间
+    $("div").click(function(){
+        $(this).slideUp(4000);
+    })
+    //滑上
+    $("#slidedown").click(function(){
+        $("div").slideDown(4000);
+    })
+    //滑下
+    $("#slideup").click(function(){
+        $("div").slideUp(4000);
+    })
+    //淡入
+    $("#fadein").click(function(){
+        $("div").fadeIn(4000);
+    })
+    //淡出
+    $("#fadeout").click(function(){
+        $("div").fadeOut(4000);
+    })
+    //向右滑动
+    $("#animate").click(function(){
+        $("div").animate({
+            "margin-left":"500px"
+
+        },3000)
+    })
+</script>
+</html>

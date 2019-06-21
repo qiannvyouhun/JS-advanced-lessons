@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    console.log(a);//undefined
+    if(true){
+        var a=1;
+    }
+    console.log(a);//1
+
+    //这种情况仅会对变量进行定义的提升
+    foo();
+    console.log(foo);
+    var foo=function(){
+        console.log("foo");
+    }
+
+    //作用域
+    var a=1;//全局变量，所有的位置均可访问
+    function fn1(){
+        console.log(a);//1
+        var b=2;
+        var c=3;
+        function fn2(){
+            var c=30;
+            var d=4;
+            console.log(c);//30
+        }
+        fn2();
+        console.log(c);//3
+        console.log(d);//undefined
+    }
+    fn2();//报错：因为fn2在fn1里面，所以作用范围只在fn1函数里面
+    fn1();
+
+    //ES5没有块级作用域，只有函数的局部作用域
+    if(true){
+        var a=2;
+    }
+    console.log(a);
+
+    //ES6
+    if(true){
+        let b=3;
+    }
+    console.log(b);//报错b未定义
+
+    if(true){
+        let b=3;
+        console.log(b);//3
+    }
+    //上下文，当某行代码执行过程中，它的上下文环境，当前作用域包含的变量，函数调用域，this指向
+    var x=5;
+    var y=6;
+    function foo(){
+        var a=1;
+        var b=2;
+        function bar(){
+            var c=3;
+            var d=4;
+        }
+        bar();
+    }
+    foo();
+</script>
+</html>
